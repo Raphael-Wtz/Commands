@@ -32,6 +32,7 @@ ncbi-acc-download -h<br/>
 
 **Look at a downloaded file**<br/>
 less *filename*<br/>
+
 (spacebar down, P up, Q quit)<br/>
 
 **Download a FASTA file**<br/>
@@ -44,6 +45,7 @@ ncbi-acc-download -F gff3 *scaffoldname*<br/>
 man grep<br/>
 **Example cmd to use grep**<br/>
 grep LOC5513668 NW_001834348.1.gff > LOC5513668.gff<br/>
+
 (If you leave off '> file', the result will be printed to your screen the '>' sign redirects this to a file)<br/>
 **To only include lines with word exon**<br/>
 grep exon LOC5513668.gff > LOC5513668.mrna.gff<br/>
