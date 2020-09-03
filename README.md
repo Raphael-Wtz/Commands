@@ -53,3 +53,14 @@ grep LOC5513668 NW_001834348.1.gff > LOC5513668.gff<br/>
 
 **To only include lines with word exon**<br/>
 grep exon LOC5513668.gff > LOC5513668.mrna.gff<br/>
+
+**Exclude an isoform (example)**
+grep -v X2 LOC5513668.gff > LOC5513668.notX2.gff
+**Exclude another isoform (ex)**
+grep -v X3 LOC5513668.notX2.gff > LOC5513668.X1.gff
+
+**Sort a gff file and name the ouput (example)**
+gt gff3 -sort  -tidy -force -o LOC5513668.sorted.gff LOC5513668.X1.gff
+
+**Lengths of exons introns and name output (ex)**
+gt stat -genelengthdistri -exonlengthdistri -intronlengthdistri -cdslengthdistri -addintrons -force  -o LOC5513668.sorted.counts.gff LOC5513668.sorted.gff
