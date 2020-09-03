@@ -64,3 +64,14 @@ gt gff3 -sort  -tidy -force -o LOC5513668.sorted.gff LOC5513668.X1.gff
 
 **Lengths of exons introns and name output (ex)**
 gt stat -genelengthdistri -exonlengthdistri -intronlengthdistri -cdslengthdistri -addintrons -force  -o LOC5513668.sorted.counts.gff LOC5513668.sorted.gff
+
+**Retrive lines that contain CDS**
+grep CDS LOC5513668.X1.gff > LOC5513668.X1.cds.gff
+**Next:**
+bedtools getfasta -s -fi NW_001834348.1.fa -fo LOC5513668.X1.cds.fa -bed LOC5513668.X1.cds.gff
+
+**concatenate exons together**
+union LOC5513668.X1.cds.fa -outseq LOC5513668.X1.cds.union.fa
+
+**Emboss translate**
+transeq LOC5513668.X1.cds.union.fa -outseq LOC5513668.X1.aa.fa
