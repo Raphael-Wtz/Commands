@@ -75,3 +75,17 @@ union LOC5513668.X1.cds.fa -outseq LOC5513668.X1.cds.union.fa
 
 **Emboss translate**
 transeq LOC5513668.X1.cds.union.fa -outseq LOC5513668.X1.aa.fa
+
+**count number of lines containing x in file**
+grep -c x filename
+
+**look for x in less**
+/x
+
+
+**SHELLS**
+**display values of a variable**
+echo $variablename
+
+**assign value to variable**
+variablename=value
