@@ -54,73 +54,73 @@ grep LOC5513668 NW_001834348.1.gff > LOC5513668.gff<br/>
 **To only include lines with word exon**<br/>
 grep exon LOC5513668.gff > LOC5513668.mrna.gff<br/>
 
-**Exclude an isoform (example)**
-grep -v X2 LOC5513668.gff > LOC5513668.notX2.gff
-**Exclude another isoform (ex)**
-grep -v X3 LOC5513668.notX2.gff > LOC5513668.X1.gff
+**Exclude an isoform (example)**<br/>
+grep -v X2 LOC5513668.gff > LOC5513668.notX2.gff<br/>
+**Exclude another isoform (ex)**<br/>
+grep -v X3 LOC5513668.notX2.gff > LOC5513668.X1.gff<br/>
 
-**Sort a gff file and name the ouput (example)**
-gt gff3 -sort  -tidy -force -o LOC5513668.sorted.gff LOC5513668.X1.gff
+**Sort a gff file and name the ouput (example)**<br/>
+gt gff3 -sort  -tidy -force -o LOC5513668.sorted.gff LOC5513668.X1.gff<br/>
 
 **Lengths of exons introns and name output (ex)**
-gt stat -genelengthdistri -exonlengthdistri -intronlengthdistri -cdslengthdistri -addintrons -force  -o LOC5513668.sorted.counts.gff LOC5513668.sorted.gff
+gt stat -genelengthdistri -exonlengthdistri -intronlengthd<br/>istri -cdslengthdistri -addintrons -force  -o LOC5513668.sorted.counts.gff LOC5513668.sorted.gff<br/>
 
-**Retrive lines that contain CDS**
-grep CDS LOC5513668.X1.gff > LOC5513668.X1.cds.gff
-**Next:**
-bedtools getfasta -s -fi NW_001834348.1.fa -fo LOC5513668.X1.cds.fa -bed LOC5513668.X1.cds.gff
+**Retrive lines that contain CDS**<br/>
+grep CDS LOC5513668.X1.gff > LOC5513668.X1.cds.gff<br/>
+**Next:**<br/>
+bedtools getfasta -s -fi NW_001834348.1.fa -fo LOC5513668.X1.cds.fa -bed LOC5513668.X1.cds.gff<br/>
 
-**concatenate exons together**
-union LOC5513668.X1.cds.fa -outseq LOC5513668.X1.cds.union.fa
+**concatenate exons together**<br/>
+union LOC5513668.X1.cds.fa -outseq LOC5513668.X1.cds.union.fa<br/>
 
-**Emboss translate**
-transeq LOC5513668.X1.cds.union.fa -outseq LOC5513668.X1.aa.fa
+**Emboss translate**<br/>
+transeq LOC5513668.X1.cds.union.fa -outseq LOC5513668.X1.aa.fa<br/>
 
-**count number of lines containing x in file**
-grep -c x filename
+**count number of lines containing x in file**<br/>
+grep -c x filename<br/>
 
-**look for x in less**
-/x
+**look for x in less**<br/>
+/x<br/>
 
 
-**SHELLS**
-**display values of a variable**
-echo $variablename
+**SHELLS**<br/>
+**display values of a variable**<br/>
+echo $variablename<br/>
 
-**assign value to variable**
-variablename=value
+**assign value to variable**<br/>
+variablename=value<br/>
 
-**get github repository**
-git clone githublink
+**get github repository**<br/>
+git clone githublink<br/>
 
-**remove directiory, move it**
-rmdir lab4
-mv lab4-myname lab4
-cd lab4
+**remove directiory, move it**<br/>
+rmdir lab4<br/>
+mv lab4-myname lab4<br/>
+cd lab4<br/>
 
-**put homologs into one file example**
-cat AF254382.1.fa  NR_145820.1.fa > 18s.fa
-cat file1 file2 > filename.fa
-**align combined sequences**
-muscle -in combinedfile.fa -out combinedfile.aligned.fa
-**to look at alignment**
-alv -k combinedfile.aligned.fa | less -r
-**calculate identity**
-t_coffee -other_pg seq_reformat -in combinedfile.aligned.fa -output sim
+**put homologs into one file example**<br/>
+cat AF254382.1.fa  NR_145820.1.fa > 18s.fa<br/>
+cat file1 file2 > filename.fa<br/>
+**align combined sequences**<br/>
+muscle -in combinedfile.fa -out combinedfile.aligned.fa<br/>
+**to look at alignment**<br/>
+alv -k combinedfile.aligned.fa | less -r<br/>
+**calculate identity**<br/>
+t_coffee -other_pg seq_reformat -in combinedfile.aligned.fa -output sim<br/>
 
-**unzip file**
-gunzip filename
+**unzip file**<br/>
+gunzip filename<br/>
 
-**add comment git**
-git commit -a -m "commenttext"
-**other git cmds**
-git status
-git log
-git restore filename
-git push    (to commit)
+**add comment git**<br/>
+git commit -a -m "commenttext"<br/>
+**other git cmds**<br/>
+git status<br/>
+git log<br/>
+git restore filename<br/>
+git push    (to commit)<br/>
 
-**translating and keeping gaps**
-faTrans inputfile.aligned.fa   outputfile.trans.fa
+**translating and keeping gaps**<br/>
+faTrans inputfile.aligned.fa   outputfile.trans.fa<br/>
 
 
 cp -r lab4-Raphael-Wtz/ ~/lab4_backup
