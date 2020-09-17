@@ -89,3 +89,38 @@ echo $variablename
 
 **assign value to variable**
 variablename=value
+
+**get github repository**
+git clone githublink
+
+**remove directiory, move it**
+rmdir lab4
+mv lab4-myname lab4
+cd lab4
+
+**put homologs into one file example**
+cat AF254382.1.fa  NR_145820.1.fa > 18s.fa
+cat file1 file2 > filename.fa
+**align combined sequences**
+muscle -in combinedfile.fa -out combinedfile.aligned.fa
+**to look at alignment**
+alv -k combinedfile.aligned.fa | less -r
+**calculate identity**
+t_coffee -other_pg seq_reformat -in combinedfile.aligned.fa -output sim
+
+**unzip file**
+gunzip filename
+
+**add comment git**
+git commit -a -m "commenttext"
+**other git cmds**
+git status
+git log
+git restore filename
+git push    (to commit)
+
+**translating and keeping gaps**
+faTrans inputfile.aligned.fa   outputfile.trans.fa
+
+
+cp -r lab4-Raphael-Wtz/ ~/lab4_backup
