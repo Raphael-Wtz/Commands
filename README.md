@@ -124,3 +124,15 @@ faTrans inputfile.aligned.fa   outputfile.trans.fa<br/>
 
 
 cp -r lab4-Raphael-Wtz/ ~/lab4_backup
+
+**making a database**
+ makeblastdb -in ~/data/blast/allprotein.fas -parse_seqids -dbtype prot
+ 
+ **filter out high e-values**
+ awk '{if ($6<0.00000000000001)print $1 }' XP_032239066.blastp.detail.out > XP_032239066.blastp.detail.filtered.out
+ 
+ **count number of lines (whereas grep is number words)**
+  wc -l XP_032239066.blastp.detail.filtered.out
+  
+  **remove columns with more than 50% gaps**
+  t_coffee -other_pg seq_reformat -in XP_032239066.blastp.detail.filtered.aligned.fas -action +rm_gap 50 -out allhomologs.aligned.r50.fa
