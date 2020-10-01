@@ -123,16 +123,41 @@ git push    (to commit)<br/>
 faTrans inputfile.aligned.fa   outputfile.trans.fa<br/>
 
 
-cp -r lab4-Raphael-Wtz/ ~/lab4_backup
+cp -r lab4-Raphael-Wtz/ ~/lab4_backup<br/>
 
-**making a database**
- makeblastdb -in ~/data/blast/allprotein.fas -parse_seqids -dbtype prot
+**making a database**<br/>
+ makeblastdb -in ~/data/blast/allprotein.fas -parse_seqids -dbtype prot<br/>
  
- **filter out high e-values**
- awk '{if ($6<0.00000000000001)print $1 }' XP_032239066.blastp.detail.out > XP_032239066.blastp.detail.filtered.out
- 
- **count number of lines (whereas grep is number words)**
-  wc -l XP_032239066.blastp.detail.filtered.out
+ **filter out high e-values**<br/>
+ awk '{if ($6<0.00000000000001)print $1 }' XP_032239066.blastp.detail.out > XP_032239066.blastp.detail.filtered.out<br/>
+ **filter out e-value and amino acid at same time**<br/>
+ awk '{if ($3>=50 &&  $6<0.0000000001)print $0 }' ~/labs/lab5/XP_001630613.blastp.detail.out > ~/labs/lab5/XP_001630613.blastp.detail.filtered.out<br/>
+
+ **count number of lines (whereas grep is number words)**<br/>
+  wc -l XP_032239066.blastp.detail.filtered.out<br/>
   
-  **remove columns with more than 50% gaps**
-  t_coffee -other_pg seq_reformat -in XP_032239066.blastp.detail.filtered.aligned.fas -action +rm_gap 50 -out allhomologs.aligned.r50.fa
+  **remove columns with more than 50% gaps**<br/>
+  t_coffee -other_pg seq_reformat -in XP_032239066.blastp.detail.filtered.aligned.fas -action +rm_gap 50 -out allhomologs.aligned.r50.fa<br/>
+  
+  **make newick format into newick file**<br/>
+  echo "((You,your_sister),your_cousin);" > family.tre<br/>
+
+**display newick tree**<br/>
+nw_display family.tre<br/>
+
+**set a root**<br/>
+nw_reroot phyla.tre Chordata >phyla.reroot.tre<br/>
+
+**make a tree with iqtree from alignment**<br/>
+iqtree -s allhomologs.aligned.r50.fa -nt 2<br/>
+
+**see unrooted tree**<br/>
+gotree draw png -w 1000 -i allhomologs.aligned.r50.fa.treefile  -r -o  allhomologs.aligned.r50.fa.png<br/>
+**midpoint rooting**<br/>
+gotree reroot midpoint -i allhomologs.aligned.r50.fa.treefile -o allhomologs.aligned.r50.fa.midpoint.treefile<br/>
+
+**reroot when out and in groups are known from external sources**<br/>
+nw_reroot allhomologs.aligned.r50.fa.treefile Drosophila_melanogaster_Disks_large_1_DLG1_P31007 Nematostella_vectensis_disks_large_homolog_1_XP_001638123.2 Pocillopora_damicornis_A0A3M6TL78 Homo_sapiens_Disks_large_homolog_3_DLG3_Q92796 Homo_sapiens_Disks_large_homolog_4_DLG4_P78352 Homo_sapiens_Disks_large_homolog_1_DLG1_Q12959 Homo_sapiens_Disks_large_homolog_2_DLG2_Q15700 >allhomologs.aligned.r50.fa.MendozaRoot.treefile<br/>
+
+**switch phylogram to cladogram**<br/>
+nw_topology allhomologs.aligned.r50.fa.MendozaRoot.treefile | nw_display -s  -w 1000 > allhomologs.aligned.r50.fa.MendozaRoot.cladogram.svg -<br/>
